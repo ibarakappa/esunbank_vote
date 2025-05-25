@@ -20,4 +20,9 @@ public interface VotingHistoryDao extends JpaRepository<VotingHistory, Integer> 
     // 調用 Stored Procedure 來獲取投票數
     @Query(value = "CALL esunbank.GetVotingCounts()", nativeQuery = true)
     List<Object[]> getVotingCounts();
+    
+    @Query(value = "SELECT vh.ID, vh.Voter, vi.Voting_ItemName " +
+            "FROM voting_history vh " +
+            "JOIN voting_items vi ON vh.Voting_ItemNo = vi.Voting_ItemNo", nativeQuery = true)
+    List<Object[]> findAllWithItemName();
 }

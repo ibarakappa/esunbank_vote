@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.esunbank_vote.entity.VotingHistory;
+import com.example.esunbank_vote.entity.VotingHistoryDTO;
 
 
 @Service
@@ -18,4 +19,7 @@ public interface VotingHistoryService {
 
     // 新增投票記錄
     List<VotingHistory> createVotingHistory(List<VotingHistory> votingHistories);
+    
+    // 查詢投票紀錄比對投票物件
+    List<VotingHistoryDTO> getAllVotingHistoriesWithNames();
 }

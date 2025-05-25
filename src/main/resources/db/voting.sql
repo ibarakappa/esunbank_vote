@@ -1,13 +1,13 @@
 -- 投票項目
 CREATE TABLE IF NOT EXISTS esunbank.voting_items (
-    ID INT PRIMARY KEY,
+    ID INT PRIMARY KEY ,
     Voting_ItemNo INT NOT NULL UNIQUE,
     Voting_ItemName VARCHAR(255) NOT NULL
 );
 
 -- 投票紀錄
 CREATE TABLE IF NOT EXISTS esunbank.voting_history (
-    ID INT PRIMARY KEY,
+    ID INT PRIMARY KEY AUTO INCREMENT,
     Voter VARCHAR(255) NOT NULL,
     Voting_ItemNo INT NOT NULL,
 );

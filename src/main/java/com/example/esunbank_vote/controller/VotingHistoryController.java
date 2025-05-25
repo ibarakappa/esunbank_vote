@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.esunbank_vote.entity.VotingHistory;
+import com.example.esunbank_vote.entity.VotingHistoryDTO;
 import com.example.esunbank_vote.service.VotingHistoryService;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class VotingHistoryController {
 //    }
 
     @GetMapping("/api/getAllVotingHistories")
-    public List<VotingHistory> getAllVotingHistories() {
-        return votingHistoryService.getAllVotingHistories();
+    public List<VotingHistoryDTO> getAllVotingHistories() {
+        return votingHistoryService.getAllVotingHistoriesWithNames();
     }
 
     @GetMapping("/api/getVotingHistoryById")

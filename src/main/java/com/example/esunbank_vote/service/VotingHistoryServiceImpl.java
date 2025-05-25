@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.esunbank_vote.entity.VotingHistory;
+import com.example.esunbank_vote.entity.VotingHistoryDTO;
 import com.example.esunbank_vote.repository.VotingHistoryDao;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class VotingHistoryServiceImpl implements VotingHistoryService {
@@ -34,4 +36,16 @@ public class VotingHistoryServiceImpl implements VotingHistoryService {
     public List<VotingHistory> createVotingHistory(List<VotingHistory> votingHistories) {
         return votingHistoryDao.saveAll(votingHistories);
     }
-}
+
+	@Override
+	public List<VotingHistoryDTO> getAllVotingHistoriesWithNames() {
+		 List<Object[]> rawList = votingHistoryDao.findAllWithItemName();
+
+	        return rawList.stream()
+	            .map(obj -> new VotingHistoryDTO(
+	                obj[1].toString(),       // Voter
+	                obj[2].toString()        // Voting_ItemName
+	            ))
+	            .collect(Collectors.toList());
+	    }
+	}
